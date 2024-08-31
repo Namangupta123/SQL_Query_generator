@@ -19,7 +19,7 @@ To use the SQL query generator, you need to set up your environment with the cor
 
 1. Clone the repository:
    ```
-   git clone https://github.com/your-username/sql-query-generator.git
+   git clone https://github.com/Namangupta123/SQL_Query_generator.git
    ```
 
 2. Install the required dependencies:
