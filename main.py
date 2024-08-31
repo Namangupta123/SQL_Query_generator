@@ -9,7 +9,7 @@ os.environ["REPLICATE_API_TOKEN"] = os.getenv("REPLICATE_API_TOKEN")
 
 replicate_id = "meta/llama-2-13b-chat:f4e2de70d66816a838a89eeeb621910adffb0dd0baba3976c96980970978018d"
 llama2_chat_replicate = Replicate(
-    model=replicate_id, input={"temperature": 0.01, "max_length": 500, "top_p": 1}
+    model=replicate_id, model_kwargs={"temperature": 0.01, "max_length": 500, "top_p": 1}
 )
 
 llm = llama2_chat_replicate
