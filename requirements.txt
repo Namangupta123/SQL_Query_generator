@@ -1,0 +1,6 @@
+langchain_community
+langchain_core
+python-dotenv
+replicate
+StrOutputParser
+ChatPromptTemplate
