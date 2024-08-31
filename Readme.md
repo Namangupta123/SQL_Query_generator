@@ -29,7 +29,14 @@ To use the SQL query generator, you need to set up your environment with the cor
 
 3. Set up your `.env` file with the correct API keys and tokens. You can use the `.env.example` file as a template.
 
-4. Run the `main.py` script:
+4. Write the schema for your database. Here is an example of how to write a schema:
+Employees
+- id: int
+- name: str
+- age: int
+- department: str
+
+5. Run the `main.py` script:
 
 ## Contributing
 
