@@ -38,7 +38,7 @@ Employees
 - Date_of_joining(Date)
 - Salary(Int)
 ```
-You can add more tables and columns as needed.
+**You can add more tables and columns as needed.**
 
 5. Run the `main.py` script:
 
