@@ -4,3 +4,4 @@ python-dotenv
 replicate
 StrOutputParser
 ChatPromptTemplate
+streamlit
