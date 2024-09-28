@@ -6,8 +6,9 @@ from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
 
 load_dotenv()
-os.environ["REPLICATE_API_TOKEN"]=st.secrets["api"]["REPLICATE_API_TOKEN"]
+os.environ["REPLICATE_API_TOKEN"] = st.secrets["api"]["REPLICATE_API_TOKEN"]
 replicate_id = st.secrets["id"]["REPLICATE_ID"]
+
 llama2_chat_replicate = Replicate(
     model=replicate_id, model_kwargs={"temperature": 0.06, "max_length": 700, "top_p": 1}
 )
@@ -43,7 +44,6 @@ def main():
     schema = st.text_area("Enter schema", key="schema")
     if schema:
         generate(schema)
-    
 
 def generate(schema):
     question = st.text_input("Enter your query", key="query")
@@ -66,9 +66,13 @@ def generate(schema):
                     st.code(result, language="sql")
                 except Exception as e:
                     st.error(f"An error occurred: {e}")
+                    st.error(f"Details: {str(e)}")
 
     if st.button("RESET"):
-        st.rerun()
+        try:
+            st.rerun()
+        except Exception as e:
+            st.error(f"An error occurred while resetting the page: {e}")
 
 if __name__ == "__main__":
     main()
