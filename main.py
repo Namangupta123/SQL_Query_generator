@@ -6,8 +6,8 @@ from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
 
 load_dotenv()
-os.environ["REPLICATE_API_TOKEN"]=os.getenv("REPLICATE_API_TOKEN")
-replicate_id = os.getenv("REPLICATE_ID")
+os.environ["REPLICATE_API_TOKEN"]=st.secrets["api"]["REPLICATE_API_TOKEN"]
+replicate_id = st.secrets["id"]["REPLICATE_ID"]
 llama2_chat_replicate = Replicate(
     model=replicate_id, model_kwargs={"temperature": 0.06, "max_length": 700, "top_p": 1}
 )
