@@ -10,7 +10,7 @@ os.environ["REPLICATE_API_TOKEN"] = st.secrets["api"]["REPLICATE_API_TOKEN"]
 # replicate_id = st.secrets["id"]["REPLICATE_ID"]
 
 llama2_chat_replicate = Replicate(
-    model="meta/llama-2-13b-chat", model_kwargs={"temperature": 0.02, "max_length": 700, "top_p": 1}
+    model="meta/llama-2-13b-chat", model_kwargs={"temperature": 0.50, "max_length": 500, "top_p": 1}
 )
 
 llm = llama2_chat_replicate
