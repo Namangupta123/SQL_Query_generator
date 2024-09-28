@@ -6,8 +6,7 @@ from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
 
 load_dotenv()
-if 'REPLICATE_API_TOKEN' in st.secrets:
-    os.environ["REPLICATE_API_TOKEN"] = "r8_AYuRXnk6zIutQFUHbZEKzB2x5ZsEQ4I0pnI9U"
+os.environ["REPLICATE_API_TOKEN"]=os.getenv("REPLICATE_API_TOKEN")
 
 replicate_id = "meta/llama-2-13b-chat:f4e2de70d66816a838a89eeeb621910adffb0dd0baba3976c96980970978018d"
 llama2_chat_replicate = Replicate(
