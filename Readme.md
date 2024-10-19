@@ -1,6 +1,6 @@
 # SQL Query Generator
 
-The `main.py` script in this project is a powerful tool for generating SQL queries from a given database schema and a user's question. It effectively utilizes the `langchain_community`, `langchain_core`, and `replicate` libraries to create a sophisticated language model. This model can accurately interpret the provided schema and question, and generate the corresponding SQL query with high precision. The script is designed to be user-friendly, prompting users for necessary inputs and seamlessly integrating with the environment variables for secure API token management.
+The `main.py` script in this project is a powerful tool for generating SQL queries from a given database schema and a user's question. It effectively utilizes the `langchain_community`, `langchain_core`, and `Cohere` libraries to create a sophisticated language model. This model can accurately interpret the provided schema and question, and generate the corresponding SQL query with high precision. The script is designed to be user-friendly, prompting users for necessary inputs and seamlessly integrating with the environment variables for secure API token management.
 
 ## Requirements
 
@@ -9,7 +9,7 @@ Make sure you have the following dependencies installed:
 - `langchain_community`
 - `langchain_core`
 - `python-dotenv`
-- `replicate`
+- `Cohere`
 - `StrOutputParser`
 - `ChatPromptTemplate`
 

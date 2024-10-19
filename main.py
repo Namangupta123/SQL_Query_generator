@@ -1,19 +1,13 @@
 import streamlit as st
-from langchain_community.llms import Replicate
 import os
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_community.llms import Cohere
 from dotenv import load_dotenv
 
 load_dotenv()
-os.environ["REPLICATE_API_TOKEN"] = st.secrets["api"]["REPLICATE_API_TOKEN"]
-# replicate_id = st.secrets["id"]["REPLICATE_ID"]
 
-llama2_chat_replicate = Replicate(
-    model="meta/llama-2-13b-chat", model_kwargs={"temperature": 0.50, "max_length": 500, "top_p": 1}
-)
-
-llm = llama2_chat_replicate
+cohere_api = os.getenv["COHERE_API_KEY"]
 
 template = """Based on the table schema below, write a SQL query that would answer the user's question:
 {schema}
@@ -27,6 +21,8 @@ prompt = ChatPromptTemplate.from_messages(
         ("human", template),
     ]
 )
+cohere_llm = Cohere(model="command", temperature=0.1, cohere_api_key=cohere_api)
+
 
 st.set_page_config(
     page_title="SQL Gen",
@@ -55,9 +51,11 @@ def generate(schema):
             with st.spinner("Please wait for a few seconds :)"):
                 try:
                     input_data = {"schema": schema, "question": question}
+                    
+                    # Use LangChain with Cohere to generate the SQL query
                     sql_response = (
                         prompt
-                        | llm.bind(stop=["\nSQLResult:"])
+                        | cohere_llm.bind(stop=["\nSQLResult:"])
                         | StrOutputParser()
                     )
                     result = sql_response.invoke(input_data)
