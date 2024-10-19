@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-cohere_api = os.getenv["COHERE_API_KEY"]
+cohere_api = '30Q3NniolKt7XuDD8JIv08HU6l7QeSEo9DmNJRu3'
 
 template = """Based on the table schema below, write a SQL query that would answer the user's question:
 {schema}
@@ -42,7 +42,7 @@ def main():
         generate(schema)
 
 def generate(schema):
-    question = st.text_input("Enter your query", key="query")
+    question = st.text_input("Enter your question", key="query")
 
     if st.button("Generate SQL"):
         if not question:
@@ -52,7 +52,6 @@ def generate(schema):
                 try:
                     input_data = {"schema": schema, "question": question}
                     
-                    # Use LangChain with Cohere to generate the SQL query
                     sql_response = (
                         prompt
                         | cohere_llm.bind(stop=["\nSQLResult:"])
